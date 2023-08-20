@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MapperXml.DoctorMapper">
+
+    <select id="getById" resultType="org.example.Models.Doctor">
+        SELECT * FROM Doctor WHERE doctor_id = #{id}
+    </select>
+
+    <select id="getAll" resultType="org.example.Models.Doctor">
+        SELECT * FROM Doctor
+    </select>
+
+    <insert id="save" parameterType="org.example.Models.Doctor">
+        INSERT INTO Doctor (doctor_id, name, qualification, phone_number, email)
+        VALUES (#{doctorId}, #{name}, #{qualification}, #{phoneNumber}, #{email})
+    </insert>
+
+    <delete id="delete" parameterType="org.example.Models.Doctor">
+        DELETE FROM Doctor WHERE doctor_id = #{doctorId}
+    </delete>
+
+    <update id="update" parameterType="org.example.Models.Doctor">
+        UPDATE Doctor SET name = #{name}, qualification = #{qualification},
+        phone_number = #{phoneNumber}, email = #{email}
+        WHERE doctor_id = #{doctorId}
+    </update>
+
+</mapper>

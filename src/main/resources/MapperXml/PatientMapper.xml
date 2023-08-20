@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MapperXml.PatientMapper">
+
+    <select id="getById" resultType="org.example.Models.Patient">
+        SELECT * FROM Patient WHERE patient_id = #{id}
+    </select>
+
+    <select id="getAll" resultType="org.example.Models.Patient">
+        SELECT * FROM Patient
+    </select>
+
+    <insert id="save" parameterType="org.example.Models.Patient">
+        INSERT INTO Patient (patient_id, patient_name, patient_date_of_birth, patient_gender,
+        patient_address, phone_number, patient_email, Nurse_nurse_id)
+        VALUES (#{patientId}, #{patientName}, #{patientDateOfBirth}, #{patientGender},
+        #{patientAddress}, #{phoneNumber}, #{patientEmail}, #{nurse.nurseId})
+    </insert>
+
+    <delete id="delete" parameterType="org.example.Models.Patient">
+        DELETE FROM Patient WHERE patient_id = #{patientId}
+    </delete>
+
+    <update id="update" parameterType="org.example.Models.Patient">
+        UPDATE Patient SET patient_name = #{patientName}, patient_date_of_birth = #{patientDateOfBirth},
+        patient_gender = #{patientGender}, patient_address = #{patientAddress}, phone_number = #{phoneNumber},
+        patient_email = #{patientEmail}, Nurse_nurse_id = #{nurse.nurseId}
+        WHERE patient_id = #{patientId}
+    </update>
+
+</mapper>
